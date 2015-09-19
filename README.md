@@ -1,13 +1,18 @@
-# `getScreenId.js`: Hacking to use single chrome-extension among on any domain!
+# `getScreenId.js` / [LIVE Demo](https://www.webrtc-experiment.com/getScreenId/)
+
+## Hacking to use single chrome-extension on any domain!
 
 ```html
 <!--
-    This script is a hack used to support single chrome extension usage on any domain.
-    This script has issues, though.
-    It uses "postMessage" mechanism which fails to work if someone is using it from inside an <iframe>.
-    The only solution for such cases is, use WebSockets or external servers to pass "source-ids".
+* This script is a hack used to support single chrome extension usage on any domain.
+
+* This script has issues, though.
+* It uses "postMessage" mechanism which fails to work if someone is using it from inside an <iframe>.
+* The only solution for such cases is, use WebSockets or external servers to pass "source-ids".
 -->
 ```
+
+> You don't need to PUBLISH/deploy your own chrome-extension when using this script!
 
 # Chrome Extension
 
@@ -26,8 +31,6 @@
 * [https://github.com/muaz-khan/Firefox-Extensions/tree/master/enable-screen-capturing](https://github.com/muaz-khan/Firefox-Extensions/tree/master/enable-screen-capturing)
 
 # How to use?
-
-* **Demo:** [https://www.webrtc-experiment.com/getScreenId/](https://www.webrtc-experiment.com/getScreenId/)
 
 ```html
 <script src="https://cdn.WebRTC-Experiment.com/getScreenId.js"></script>
@@ -86,6 +89,10 @@ getScreenId(function (error, sourceId, screen_constraints) {
     });
 });
 ```
+
+# Deploy extension yourself?
+
+* [https://github.com/muaz-khan/Chrome-Extensions/tree/master/desktopCapture](https://github.com/muaz-khan/Chrome-Extensions/tree/master/desktopCapture)
 
 # License
 
