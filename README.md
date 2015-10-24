@@ -1,7 +1,3 @@
-> Note: Starting from Chrome 45, this demo is NO-MORE functional.
->
-> Please don't use `getScreenId.js` in any of your domains until a new hack is added.
-
 # `getScreenId.js` / [LIVE Demo](https://www.webrtc-experiment.com/getScreenId/)
 
 ## Hacking to use single chrome-extension on any domain!
