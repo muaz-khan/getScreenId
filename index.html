@@ -128,12 +128,25 @@
 
             <div class="github-stargazers"></div>
 
+            <blockquote>
+              YouTube video: <a href="https://www.youtube.com/watch?v=UHrsfe9RYAQ" target="_blank">https://www.youtube.com/watch?v=UHrsfe9RYAQ</a>
+            </blockquote>
+
             <section class="experiment" style="text-align:center;">
                 <br><button id="capture-screen">Capture Your Own Screen</button><hr>
                 <video controls autoplay style="width: 100%;background-repeat: no-repeat;background-size: 100%;background-image: url(https://lh5.googleusercontent.com/6U-gmL_hG9bbquDZdW_ajiA-1bgkfSlHOkzR24aigkyPQzXWXNoRNfyLjXS3rqV92iwq395JSQ=s640-h400-e365-rw);"></video>
             </section>
 
             <script>
+                // via: https://bugs.chromium.org/p/chromium/issues/detail?id=487935#c17
+                // you can capture screen on Android Chrome >= 55 with flag: "Experimental ScreenCapture android"
+                window.IsAndroidChrome = false;
+                try {
+                    if (navigator.userAgent.toLowerCase().indexOf("android") > -1 && /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor)) {
+                        window.IsAndroidChrome = true;
+                    }
+                } catch (e) {}
+
                 document.getElementById('capture-screen').onclick = function() {
                     document.getElementById('capture-screen').disabled = true;
 
@@ -149,6 +162,21 @@
                         // getUserMedia(screen_constraints, onSuccess, onFailure);
 
                         document.getElementById('capture-screen').disabled = false;
+
+                        if (IsAndroidChrome) {
+                            screen_constraints = {
+                                mandatory: {
+                                    chromeMediaSource: 'screen'
+                                },
+                                optional: []
+                            };
+                            
+                            screen_constraints = {
+                                video: screen_constraints
+                            };
+
+                            error = null;
+                        }
 
                         if(error == 'not-installed') {
                           alert('Please install Chrome extension. See the link below.');
@@ -171,7 +199,7 @@
                         navigator.getUserMedia = navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
                         navigator.getUserMedia(screen_constraints, function(stream) {
                             // share this "MediaStream" object using RTCPeerConnection API
-                            
+
                             document.querySelector('video').src = URL.createObjectURL(stream);
 
                             stream.oninactive = stream.onended = function() {
