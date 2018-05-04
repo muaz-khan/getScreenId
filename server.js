@@ -4,7 +4,7 @@
 
 var port = process.env.PORT || 9001;
 
-var server = require('https'),
+var server = require('http'),
     url = require('url'),
     path = require('path'),
     fs = require('fs');
@@ -68,13 +68,7 @@ function serverHandler(request, response) {
     }
 }
 
-var app;
-
-var options = {
-    key: fs.readFileSync(path.join(__dirname, 'fake-keys/privatekey.pem')),
-    cert: fs.readFileSync(path.join(__dirname, 'fake-keys/certificate.pem'))
-};
-app = server.createServer(options, serverHandler);
+var app = server.createServer(serverHandler);
 
 function runServer() {
     app = app.listen(port, process.env.IP || '0.0.0.0', function() {
@@ -84,7 +78,7 @@ function runServer() {
             addr.address = 'localhost';
         }
 
-        console.log('Server listening at https://' + addr.address + ':' + addr.port);
+        console.log('Server listening at http://' + addr.address + ':' + addr.port);
     });
 }
 
