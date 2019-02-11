@@ -196,6 +196,12 @@ getScreenId(successCallback, ['screen', 'audio']); // capature only screen with 
 
 * https://github.com/muaz-khan/Chrome-Extensions/tree/master/Screen-Capturing.js
 
+# Disclaimer
+
+There is no warranty, expressed or implied, associated with this product. Use at your own risk.
+
+* https://www.webrtc-experiment.com/disclaimer/
+
 # License
 
 [getScreenId.js](https://github.com/muaz-khan/getScreenId) is released under [MIT licence](https://www.webrtc-experiment.com/licence/) . Copyright (c) [Muaz Khan](http://www.MuazKhan.com/).
